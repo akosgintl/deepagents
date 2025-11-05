@@ -157,9 +157,25 @@ You have access to a few tools.
 Use this to run an internet search for a given query. You can specify the number of results, the topic, and whether raw content should be included.
 """
 
+os.environ["LANGFUSE_PUBLIC_KEY"] = "pk-lf-17f3cdca-36dc-4ed9-8e13-7abb66db9229"
+os.environ["LANGFUSE_SECRET_KEY"] = "sk-lf-339bb0c0-174f-4c4f-adfe-11794d1ea5c8"
+os.environ["LANGFUSE_BASE_URL"] = "https://cloud.langfuse.com"
+
+from langfuse import get_client
+from langfuse.langchain import CallbackHandler
+
+langfuse = get_client()
+langfuse_handler = CallbackHandler()
+
+# Test connection
+if langfuse.auth_check():
+    print("Langfuse client is authenticated and ready!")
+else:
+    print("Authentication failed.")
+
 # Create the agent
 agent = create_deep_agent(
     tools=[internet_search],
     system_prompt=research_instructions,
     subagents=[critique_sub_agent, research_sub_agent],
-)
+).with_config({"recursion_limit": 1000, "callbacks": [langfuse_handler]})
