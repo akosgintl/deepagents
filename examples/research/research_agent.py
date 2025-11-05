@@ -157,9 +157,15 @@ You have access to a few tools.
 Use this to run an internet search for a given query. You can specify the number of results, the topic, and whether raw content should be included.
 """
 
+from opik import configure 
+from opik.integrations.langchain import OpikTracer 
+
+configure() 
+opik_tracer = OpikTracer()
+
 # Create the agent
 agent = create_deep_agent(
     tools=[internet_search],
     system_prompt=research_instructions,
     subagents=[critique_sub_agent, research_sub_agent],
-)
+).with_config({"recursion_limit": 1000, "callbacks": [opik_tracer]})
