@@ -1,0 +1,329 @@
+Using:
+npx bmad-method install
+
+██████╗ ███╗   ███╗ █████╗ ██████╗       ███╗   ███╗███████╗████████╗██╗  ██╗ ██████╗ ██████╗ 
+██╔══██╗████╗ ████║██╔══██╗██╔══██╗      ████╗ ████║██╔════╝╚══██╔══╝██║  ██║██╔═══██╗██╔══██╗
+██████╔╝██╔████╔██║███████║██║  ██║█████╗██╔████╔██║█████╗     ██║   ███████║██║   ██║██║  ██║
+██╔══██╗██║╚██╔╝██║██╔══██║██║  ██║╚════╝██║╚██╔╝██║██╔══╝     ██║   ██╔══██║██║   ██║██║  ██║
+██████╔╝██║ ╚═╝ ██║██║  ██║██████╔╝      ██║ ╚═╝ ██║███████╗   ██║   ██║  ██║╚██████╔╝██████╔╝
+╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═════╝       ╚═╝     ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ 
+  
+🚀 Universal AI Agent Framework for Any Domain
+✨ Installer v4.44.3
+
+⚠️  You are installing BMad v4 (stable but frozen)
+   v4 receives critical patches only - no new features
+
+💡 Want the latest features? Try BMad v6 Alpha:
+   npx bmad-method@alpha install
+   (Alpha is stable enough for testing)
+
+? Enter the full path to your project directory where BMad should be installed: c:\_MyStuff\LANGCHAIN\deepagents-my
+? Select what to install/update (use space to select, enter to continue): BMad Agile Core System (v4.44.3) .bmad-core, Creative Writing Studio (v1.1.1) 
+.bmad-creative-writing, Infrastructure DevOps Pack (v1.12.0) .bmad-infrastructure-devops
+
+📋 Document Organization Settings
+Configure how your project documentation should be organized.
+
+? Will the PRD (Product Requirements Document) be sharded into multiple files? Yes
+? Will the architecture documentation be sharded into multiple files? Yes
+
+🛠️  IDE Configuration
+ ⚠️  IMPORTANT: This is a MULTISELECT! Use SPACEBAR to toggle each IDE! 
+🔸 Use arrow keys to navigate
+🔸 Use SPACEBAR to select/deselect IDEs
+🔸 Press ENTER when finished selecting
+
+? Which IDE(s) do you want to configure? (Select with SPACEBAR, confirm with ENTER): Cursor, Claude Code, Windsurf, Gemini CLI, Github Copilot, Codex CLI, Codex Web
+
+🔧 GitHub Copilot Configuration
+BMad works best with specific VS Code settings for optimal agent experience.
+
+? How would you like to configure GitHub Copilot settings? Configure each setting manually (customize to your preferences)
+? Would you like to include pre-built web bundles? (standalone files for ChatGPT, Claude, Gemini) Yes
+
+📦 Web bundles are standalone files perfect for web AI platforms.
+   You can choose different teams/agents than your IDE installation.
+
+? What web bundles would you like to include? All available bundles (agents, teams, expansion packs)
+? Enter directory for web bundles: c:\_MyStuff\LANGCHAIN\deepagents-my/web-bundles
+⠼ Copying complete .bmad-core folder...  Processed 67 files with {root} replacement
+  Added 4 common utilities
+  Added 3 documentation files
+⠇ Installing expansion pack: bmad-creative-writing...  Added 4 common utilities
+  Added core agent: bmad-orchestrator
+    Added agent dependency: tasks/kb-mode-interaction.md
+    Added agent dependency: data/elicitation-methods.md
+⠏ Creating manifest for bmad-creative-writing...✓ Installed expansion pack: bmad-creative-writing to .bmad-creative-writing
+⠋ Installing expansion pack: bmad-infrastructure-devops...  Added 4 common utilities
+  Added core dependency: data/technical-preferences.md
+✓ Installed expansion pack: bmad-infrastructure-devops to .bmad-infrastructure-devops
+⠙ Installing web bundles...✓ Installed all web bundles to: c:\_MyStuff\LANGCHAIN\deepagents-my/web-bundles
+⠸ Setting up cursor integration...✓ Created rule: ux-expert.mdc
+✓ Created rule: sm.mdc
+✓ Created rule: qa.mdc
+✓ Created rule: po.mdc
+✓ Created rule: pm.mdc
+✓ Created rule: dev.mdc
+✓ Created rule: bmad-orchestrator.mdc
+✓ Created rule: bmad-master.mdc
+✓ Created rule: architect.mdc
+✓ Created rule: analyst.mdc
+✓ Created rule: infra-devops-platform.mdc
+⠼ Setting up cursor integration...✓ Created rule: world-builder.mdc
+✓ Created rule: plot-architect.mdc
+✓ Created rule: narrative-designer.mdc
+✓ Created rule: genre-specialist.mdc
+✓ Created rule: editor.mdc
+✓ Created rule: dialog-specialist.mdc
+✓ Created rule: cover-designer.mdc
+✓ Created rule: character-psychologist.mdc
+✓ Created rule: book-critic.mdc
+✓ Created rule: beta-reader.mdc
+
+✓ Created Cursor rules in c:\_MyStuff\LANGCHAIN\deepagents-my\.cursor\rules\bmad
+✓ Created agent command: /ux-expert
+✓ Created agent command: /sm
+✓ Created agent command: /qa
+✓ Created agent command: /po
+✓ Created agent command: /pm
+✓ Created agent command: /dev
+✓ Created agent command: /bmad-orchestrator
+✓ Created agent command: /bmad-master
+✓ Created agent command: /architect
+✓ Created agent command: /analyst
+⠴ Setting up claude-code integration...✓ Created task command: /validate-next-story
+✓ Created task command: /trace-requirements
+✓ Created task command: /test-design
+✓ Created task command: /shard-doc
+✓ Created task command: /risk-profile
+✓ Created task command: /review-story
+✓ Created task command: /qa-gate
+✓ Created task command: /nfr-assess
+✓ Created task command: /kb-mode-interaction
+✓ Created task command: /index-docs
+✓ Created task command: /generate-ai-frontend-prompt
+✓ Created task command: /facilitate-brainstorming-session
+✓ Created task command: /execute-checklist
+✓ Created task command: /document-project
+✓ Created task command: /create-next-story
+✓ Created task command: /create-doc
+✓ Created task command: /create-deep-research-prompt
+✓ Created task command: /create-brownfield-story
+✓ Created task command: /correct-course
+✓ Created task command: /brownfield-create-story
+✓ Created task command: /brownfield-create-epic
+✓ Created task command: /apply-qa-fixes
+✓ Created task command: /advanced-elicitation
+
+✓ Created Claude Code commands for core in c:\_MyStuff\LANGCHAIN\deepagents-my\.claude\commands\BMad
+  - Agents in: c:\_MyStuff\LANGCHAIN\deepagents-my\.claude\commands\BMad\agents
+  - Tasks in: c:\_MyStuff\LANGCHAIN\deepagents-my\.claude\commands\BMad\tasks
+✓ Created agent command: /infra-devops-platform
+✓ Created task command: /validate-infrastructure
+✓ Created task command: /review-infrastructure
+⠦ Setting up claude-code integration...✓ Created task command: /execute-checklist
+✓ Created task command: /create-doc
+
+✓ Created Claude Code commands for bmad-infrastructure-devops in c:\_MyStuff\LANGCHAIN\deepagents-my\.claude\commands\bmadInfraDevOps
+  - Agents in: c:\_MyStuff\LANGCHAIN\deepagents-my\.claude\commands\bmadInfraDevOps\agents
+  - Tasks in: c:\_MyStuff\LANGCHAIN\deepagents-my\.claude\commands\bmadInfraDevOps\tasks
+✓ Created agent command: /world-builder
+✓ Created agent command: /plot-architect
+✓ Created agent command: /narrative-designer
+✓ Created agent command: /genre-specialist
+✓ Created agent command: /editor
+✓ Created agent command: /dialog-specialist
+✓ Created agent command: /cover-designer
+✓ Created agent command: /character-psychologist
+✓ Created agent command: /book-critic
+✓ Created agent command: /bmad-orchestrator
+✓ Created agent command: /beta-reader
+✓ Created task command: /workshop-dialog
+✓ Created task command: /select-next-arc
+✓ Created task command: /quick-feedback
+✓ Created task command: /publish-chapter
+✓ Created task command: /provide-feedback
+✓ Created task command: /outline-scenes
+✓ Created task command: /kb-mode-interaction
+✓ Created task command: /incorporate-feedback
+✓ Created task command: /generate-scene-list
+✓ Created task command: /generate-cover-prompts
+✓ Created task command: /generate-cover-brief
+✓ Created task command: /final-polish
+✓ Created task command: /expand-synopsis
+✓ Created task command: /expand-premise
+✓ Created task command: /execute-checklist
+✓ Created task command: /develop-character
+✓ Created task command: /critical-review
+✓ Created task command: /create-draft-section
+✓ Created task command: /create-doc
+✓ Created task command: /character-depth-pass
+✓ Created task command: /build-world
+✓ Created task command: /brainstorm-premise
+✓ Created task command: /assemble-kdp-package
+✓ Created task command: /analyze-story-structure
+✓ Created task command: /analyze-reader-feedback
+⠧ Setting up claude-code integration...✓ Created task command: /advanced-elicitation
+
+✓ Created Claude Code commands for bmad-creative-writing in c:\_MyStuff\LANGCHAIN\deepagents-my\.claude\commands\bmad-cw
+  - Agents in: c:\_MyStuff\LANGCHAIN\deepagents-my\.claude\commands\bmad-cw\agents
+  - Tasks in: c:\_MyStuff\LANGCHAIN\deepagents-my\.claude\commands\bmad-cw\tasks
+✓ Created workflow: ux-expert.md
+✓ Created workflow: sm.md
+✓ Created workflow: qa.md
+✓ Created workflow: po.md
+✓ Created workflow: pm.md
+✓ Created workflow: dev.md
+✓ Created workflow: bmad-orchestrator.md
+✓ Created workflow: bmad-master.md
+✓ Created workflow: architect.md
+✓ Created workflow: analyst.md
+✓ Created workflow: infra-devops-platform.md
+✓ Created workflow: world-builder.md
+✓ Created workflow: plot-architect.md
+✓ Created workflow: narrative-designer.md
+✓ Created workflow: genre-specialist.md
+✓ Created workflow: editor.md
+✓ Created workflow: dialog-specialist.md
+✓ Created workflow: cover-designer.md
+✓ Created workflow: character-psychologist.md
+✓ Created workflow: book-critic.md
+✓ Created workflow: beta-reader.md
+
+✓ Created Windsurf workflows in c:\_MyStuff\LANGCHAIN\deepagents-my\.windsurf\workflows
+⠇ Setting up gemini integration...✓ Created agent command: /bmad:agents:ux-expert
+✓ Created agent command: /bmad:agents:sm
+✓ Created agent command: /bmad:agents:qa
+✓ Created agent command: /bmad:agents:po
+✓ Created agent command: /bmad:agents:pm
+✓ Created agent command: /bmad:agents:dev
+✓ Created agent command: /bmad:agents:bmad-orchestrator
+✓ Created agent command: /bmad:agents:bmad-master
+✓ Created agent command: /bmad:agents:architect
+✓ Created agent command: /bmad:agents:analyst
+✓ Created agent command: /bmad:agents:infra-devops-platform
+✓ Created agent command: /bmad:agents:world-builder
+✓ Created agent command: /bmad:agents:plot-architect
+✓ Created agent command: /bmad:agents:narrative-designer
+✓ Created agent command: /bmad:agents:genre-specialist
+✓ Created agent command: /bmad:agents:editor
+⠏ Setting up gemini integration...✓ Created agent command: /bmad:agents:dialog-specialist
+✓ Created agent command: /bmad:agents:cover-designer
+✓ Created agent command: /bmad:agents:character-psychologist
+✓ Created agent command: /bmad:agents:book-critic
+✓ Created agent command: /bmad:agents:beta-reader
+✓ Created task command: /bmad:tasks:validate-next-story
+✓ Created task command: /bmad:tasks:trace-requirements
+✓ Created task command: /bmad:tasks:test-design
+✓ Created task command: /bmad:tasks:shard-doc
+✓ Created task command: /bmad:tasks:risk-profile
+✓ Created task command: /bmad:tasks:review-story
+✓ Created task command: /bmad:tasks:qa-gate
+✓ Created task command: /bmad:tasks:nfr-assess
+✓ Created task command: /bmad:tasks:kb-mode-interaction
+✓ Created task command: /bmad:tasks:index-docs
+✓ Created task command: /bmad:tasks:generate-ai-frontend-prompt
+✓ Created task command: /bmad:tasks:facilitate-brainstorming-session
+✓ Created task command: /bmad:tasks:execute-checklist
+✓ Created task command: /bmad:tasks:document-project
+✓ Created task command: /bmad:tasks:create-next-story
+⠋ Setting up gemini integration...✓ Created task command: /bmad:tasks:create-doc
+✓ Created task command: /bmad:tasks:create-deep-research-prompt
+✓ Created task command: /bmad:tasks:create-brownfield-story
+✓ Created task command: /bmad:tasks:correct-course
+✓ Created task command: /bmad:tasks:brownfield-create-story
+✓ Created task command: /bmad:tasks:brownfield-create-epic
+✓ Created task command: /bmad:tasks:apply-qa-fixes
+✓ Created task command: /bmad:tasks:advanced-elicitation
+✓ Created task command: /bmad:tasks:validate-infrastructure
+✓ Created task command: /bmad:tasks:review-infrastructure
+✓ Created task command: /bmad:tasks:workshop-dialog
+✓ Created task command: /bmad:tasks:select-next-arc
+✓ Created task command: /bmad:tasks:quick-feedback
+✓ Created task command: /bmad:tasks:publish-chapter
+✓ Created task command: /bmad:tasks:provide-feedback
+✓ Created task command: /bmad:tasks:outline-scenes
+✓ Created task command: /bmad:tasks:incorporate-feedback
+✓ Created task command: /bmad:tasks:generate-scene-list
+✓ Created task command: /bmad:tasks:generate-cover-prompts
+✓ Created task command: /bmad:tasks:generate-cover-brief
+✓ Created task command: /bmad:tasks:final-polish
+⠙ Setting up gemini integration...✓ Created task command: /bmad:tasks:expand-synopsis
+✓ Created task command: /bmad:tasks:expand-premise
+✓ Created task command: /bmad:tasks:develop-character
+✓ Created task command: /bmad:tasks:critical-review
+✓ Created task command: /bmad:tasks:create-draft-section
+✓ Created task command: /bmad:tasks:character-depth-pass
+✓ Created task command: /bmad:tasks:build-world
+✓ Created task command: /bmad:tasks:brainstorm-premise
+✓ Created task command: /bmad:tasks:assemble-kdp-package
+✓ Created task command: /bmad:tasks:analyze-story-structure
+✓ Created task command: /bmad:tasks:analyze-reader-feedback
+
+✓ Created Gemini CLI extension in c:\_MyStuff\LANGCHAIN\deepagents-my\.gemini\commands\BMad\
+You can now use commands like /bmad:agents:dev or /bmad:tasks:create-doc.
+Using pre-configured GitHub Copilot settings: manual
+
+📋 Let's configure each setting for your preferences:
+? Maximum requests per agent session (recommended: 15)? 15
+? Allow agents to run workspace tasks (package.json scripts, etc.)? Yes
+? Enable MCP (Model Context Protocol) server discovery? Yes
+? Enable automatic error detection and fixing in generated code? Yes
+? Auto-approve ALL tools without confirmation? (⚠️  EXPERIMENTAL - less secure) No
+⠋ Setting up github-copilot integration...✓ Custom settings configured
+✓ VS Code workspace settings configured successfully
+  Settings written to .vscode/settings.json:
+  • chat.agent.enabled: true
+  • chat.agent.maxRequests: 15
+  • github.copilot.chat.agent.runTasks: true
+  • chat.mcp.discovery.enabled: true
+  • github.copilot.chat.agent.autoFix: true
+  • chat.tools.autoApprove: false
+
+You can modify these settings anytime in .vscode/settings.json
+✓ Created chat mode: ux-expert.chatmode.md
+✓ Created chat mode: sm.chatmode.md
+✓ Created chat mode: qa.chatmode.md
+✓ Created chat mode: po.chatmode.md
+✓ Created chat mode: pm.chatmode.md
+✓ Created chat mode: dev.chatmode.md
+✓ Created chat mode: bmad-orchestrator.chatmode.md
+✓ Created chat mode: bmad-master.chatmode.md
+✓ Created chat mode: architect.chatmode.md
+✓ Created chat mode: analyst.chatmode.md
+✓ Created chat mode: infra-devops-platform.chatmode.md
+✓ Created chat mode: world-builder.chatmode.md
+✓ Created chat mode: plot-architect.chatmode.md
+✓ Created chat mode: narrative-designer.chatmode.md
+✓ Created chat mode: genre-specialist.chatmode.md
+⠙ Setting up github-copilot integration...✓ Created chat mode: editor.chatmode.md
+✓ Created chat mode: dialog-specialist.chatmode.md
+✓ Created chat mode: cover-designer.chatmode.md
+✓ Created chat mode: character-psychologist.chatmode.md
+✓ Created chat mode: book-critic.chatmode.md
+✓ Created chat mode: beta-reader.chatmode.md
+
+✓ Github Copilot setup complete!
+You can now find the BMad agents in the Chat view's mode selector.
+⠸ Setting up codex integration...✓ Created/updated AGENTS.md for Codex CLI integration
+Codex reads AGENTS.md automatically. Run `codex` in this project to use BMAD agents.
+✓ Added .bmad-core/* to .gitignore for local-only Codex setup
+⠼ Setting up codex-web integration...✓ Created/updated AGENTS.md for Codex CLI integration
+Codex reads AGENTS.md automatically. Run `codex` in this project to use BMAD agents.
+✓ Updated .gitignore to include .bmad-core in commits
+✔ Installation complete!
+
+✓ BMad Method installed successfully!
+
+
+🎯 Installation Summary:
+✓ .bmad-core framework installed with all agents and workflows
+✓ Expansion packs installed:
+  - bmad-creative-writing → .bmad-creative-writing/
+  - bmad-infrastructure-devops → .bmad-infrastructure-devops/
+✓ Web bundles (all bundles) installed to: c:\_MyStuff\LANGCHAIN\deepagents-my/web-bundles
+✓ IDE rules and configurations set up for: cursor, claude-code, windsurf, gemini, github-copilot, codex, codex-web
+
+📖 IMPORTANT: Please read the user guide at docs/user-guide.md (also installed at .bmad-core/user-guide.md)
+This guide contains essential information about the BMad workflow and how to use the agents effectively.
