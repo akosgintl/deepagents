@@ -1,0 +1,431 @@
+{
+  "schemaVersion": 1,
+  "id": "DeepAgents__LangGraph_Agent_Framework_with_Planning,_Filesystem,_and_Subagent_Capabilities_20251106_005924",
+  "stableId": "80496247-40c8-4e9a-9bb7-6456ca4faa36",
+  "metadata": {
+    "cascadeId": "c318e3c2-7db5-4033-adb0-d49ea0203178",
+    "generationSource": "generationWithTraces",
+    "generationTimestamp": "2025-11-06T00:59:24+01:00",
+    "mode": "SMART",
+    "originalPrompt": "Create the codemaps of this codebase"
+  },
+  "title": "DeepAgents: LangGraph Agent Framework with Planning, Filesystem, and Subagent Capabilities",
+  "traces": [
+    {
+      "id": "1",
+      "title": "Deep Agent Creation and Middleware Assembly",
+      "description": "Core library - shows how create_deep_agent() assembles middleware stack and creates the agent graph",
+      "locations": [
+        {
+          "id": "1a",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py",
+          "lineNumber": 40,
+          "lineContent": "def create_deep_agent(",
+          "title": "Entry point for deep agent creation",
+          "description": "Main factory function that users call to create a deep agent"
+        },
+        {
+          "id": "1b",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py",
+          "lineNumber": 94,
+          "lineContent": "if model is None:",
+          "title": "Default model initialization",
+          "description": "Sets up Claude Sonnet 4 as default model if none provided"
+        },
+        {
+          "id": "1c",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py",
+          "lineNumber": 97,
+          "lineContent": "deepagent_middleware = [",
+          "title": "Middleware stack assembly",
+          "description": "Constructs the core middleware list with TodoList, Filesystem, and SubAgent capabilities"
+        },
+        {
+          "id": "1d",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py",
+          "lineNumber": 98,
+          "lineContent": "TodoListMiddleware(),",
+          "title": "Planning middleware attachment",
+          "description": "Adds write_todos tool for task decomposition and tracking"
+        },
+        {
+          "id": "1e",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py",
+          "lineNumber": 99,
+          "lineContent": "FilesystemMiddleware(backend=backend),",
+          "title": "Filesystem middleware attachment",
+          "description": "Adds ls, read_file, write_file, edit_file, glob, grep tools"
+        },
+        {
+          "id": "1f",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py",
+          "lineNumber": 100,
+          "lineContent": "SubAgentMiddleware(",
+          "title": "Subagent middleware attachment",
+          "description": "Adds task tool for spawning isolated subagents with their own context"
+        },
+        {
+          "id": "1g",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py",
+          "lineNumber": 131,
+          "lineContent": "return create_agent(",
+          "title": "LangGraph agent creation",
+          "description": "Delegates to langchain's create_agent with assembled middleware and config"
+        },
+        {
+          "id": "1h",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py",
+          "lineNumber": 143,
+          "lineContent": ").with_config({\"recursion_limit\": 1000})",
+          "title": "Graph compilation with high recursion limit",
+          "description": "Returns compiled StateGraph configured for deep reasoning tasks"
+        }
+      ],
+      "traceTextDiagram": "Deep Agent Creation Flow\n└── create_deep_agent() factory \u003c-- 1a\n    ├── Model initialization\n    │   └── get_default_model() if None \u003c-- 1b\n    ├── Middleware stack assembly \u003c-- 1c\n    │   ├── TodoListMiddleware() \u003c-- 1d\n    │   ├── FilesystemMiddleware(backend) \u003c-- 1e\n    │   ├── SubAgentMiddleware() \u003c-- 1f\n    │   │   ├── default_model \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py:101\n    │   │   ├── default_tools \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py:102\n    │   │   └── default_middleware (nested) \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py:104\n    │   │       ├── TodoListMiddleware() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py:105\n    │   │       ├── FilesystemMiddleware() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py:106\n    │   │       ├── SummarizationMiddleware() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py:107\n    │   │       ├── AnthropicPromptCachingMiddleware() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py:112\n    │   │       └── PatchToolCallsMiddleware() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py:113\n    │   ├── SummarizationMiddleware() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py:118\n    │   ├── AnthropicPromptCachingMiddleware() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py:123\n    │   └── PatchToolCallsMiddleware() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py:124\n    ├── Optional: extend with custom middleware \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py:126\n    ├── Optional: append HumanInTheLoopMiddleware \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py:128\n    └── create_agent() from langchain \u003c-- 1g\n        ├── Pass: model, system_prompt, tools \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py:132\n        ├── Pass: middleware stack \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py:135\n        ├── Pass: checkpointer, store, cache \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\graph.py:138\n        └── Returns: CompiledStateGraph\n            └── .with_config(recursion_limit) \u003c-- 1h",
+      "traceGuide": "# Motivation\n\nSimple LLM agents that call tools in a loop often fail on complex, multi-step tasks. They lack **planning capabilities**, struggle with **context management** when tool results are large, and can't **delegate work** to isolate subtasks. DeepAgents solves this by providing a framework that gives agents three core capabilities: a planning tool (todo lists), filesystem tools (for context offloading), and subagent spawning (for task delegation).\n\nThe `create_deep_agent()` function [1a] is the main entry point that assembles these capabilities into a single, production-ready agent.\n\n# Details\n\n## Default Model\n\nIf no model is specified, the framework defaults to **Claude Sonnet 4** [1b], which is optimized for agentic workflows with high token limits (20,000 max tokens).\n\n## Middleware Architecture\n\nThe core innovation is a **middleware stack** [1c] that layers capabilities onto a base LangGraph agent. Each middleware adds tools and modifies the system prompt:\n\n1. **TodoListMiddleware** [1d] - Adds a `write_todos` tool for breaking down complex tasks into trackable steps\n2. **FilesystemMiddleware** [1e] - Adds six tools (`ls`, `read_file`, `write_file`, `edit_file`, `glob`, `grep`) for managing context in a virtual filesystem\n3. **SubAgentMiddleware** [1f] - Adds a `task` tool for spawning isolated subagents with their own context windows\n\n## Nested Middleware for Subagents\n\nSubagents get their **own middleware stack** [1f] that includes the same core capabilities (planning, filesystem, summarization). This allows subagents to be just as capable as the main agent while maintaining context isolation. The default middleware for subagents includes summarization to prevent context overflow during long-running tasks.\n\n## Additional Middleware\n\nThe framework also includes:\n- **SummarizationMiddleware** - Automatically condenses message history when it exceeds 170,000 tokens\n- **AnthropicPromptCachingMiddleware** - Optimizes API costs by caching system prompts\n- **PatchToolCallsMiddleware** - Handles dangling tool calls that occur during interruptions\n\n## Agent Creation\n\nFinally, the assembled configuration is passed to LangChain's `create_agent()` [1g], which builds a **LangGraph StateGraph**. The graph is configured with a high recursion limit (1000) [1h] to support deep reasoning chains without hitting artificial limits.\n\n## Extensibility\n\nUsers can inject **custom middleware** [1c] and configure **human-in-the-loop approvals** for sensitive operations. The modular design means you can use individual middleware components independently or compose them as needed."
+    },
+    {
+      "id": "2",
+      "title": "Filesystem Tool Execution and Backend Routing",
+      "description": "Core library - traces how filesystem operations route through backends and update state",
+      "locations": [
+        {
+          "id": "2a",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\filesystem.py",
+          "lineNumber": 541,
+          "lineContent": "self.tools = _get_filesystem_tools(self.backend, custom_tool_descriptions)",
+          "title": "Filesystem tools generation",
+          "description": "FilesystemMiddleware creates all six filesystem tools with backend binding"
+        },
+        {
+          "id": "2b",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\filesystem.py",
+          "lineNumber": 311,
+          "lineContent": "def write_file(",
+          "title": "Write file tool definition",
+          "description": "Tool that creates new files, delegates to backend for storage"
+        },
+        {
+          "id": "2c",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\filesystem.py",
+          "lineNumber": 317,
+          "lineContent": "resolved_backend = _get_backend(backend, runtime)",
+          "title": "Backend resolution",
+          "description": "Resolves backend from factory or instance using runtime context"
+        },
+        {
+          "id": "2d",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\filesystem.py",
+          "lineNumber": 319,
+          "lineContent": "res: WriteResult = resolved_backend.write(file_path, content)",
+          "title": "Backend write operation",
+          "description": "Delegates file writing to backend implementation (State/Store/Filesystem)"
+        },
+        {
+          "id": "2e",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\state.py",
+          "lineNumber": 117,
+          "lineContent": "def write(",
+          "title": "StateBackend write implementation",
+          "description": "Ephemeral storage - creates file data in agent state"
+        },
+        {
+          "id": "2f",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\state.py",
+          "lineNumber": 130,
+          "lineContent": "new_file_data = create_file_data(content)",
+          "title": "File data structure creation",
+          "description": "Creates FileData dict with content lines and timestamps"
+        },
+        {
+          "id": "2g",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\state.py",
+          "lineNumber": 131,
+          "lineContent": "return WriteResult(path=file_path, files_update={file_path: new_file_data})",
+          "title": "State update return",
+          "description": "Returns files_update dict for LangGraph state merger"
+        },
+        {
+          "id": "2h",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\filesystem.py",
+          "lineNumber": 324,
+          "lineContent": "return Command(",
+          "title": "Command object with state update",
+          "description": "Wraps state update in Command for LangGraph to merge into agent state"
+        }
+      ],
+      "traceTextDiagram": "Filesystem Tool Execution Flow\n├── FilesystemMiddleware.__init__() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\filesystem.py:517\n│   └── _get_filesystem_tools() \u003c-- 2a\n│       ├── _write_file_tool_generator() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\filesystem.py:296\n│       │   └── @tool def write_file() \u003c-- 2b\n│       ├── _read_file_tool_generator() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\filesystem.py:267\n│       ├── _edit_file_tool_generator() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\filesystem.py:340\n│       ├── _ls_tool_generator() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\filesystem.py:242\n│       ├── _glob_tool_generator() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\filesystem.py:386\n│       └── _grep_tool_generator() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\filesystem.py:410\n│\n└── Tool Execution (when agent calls write_file)\n    ├── write_file() tool function invoked\n    │   ├── _get_backend(backend, runtime) \u003c-- 2c\n    │   │   └── resolves factory or instance \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\filesystem.py:237\n    │   ├── resolved_backend.write() \u003c-- 2d\n    │   │   └── routes to backend implementation\n    │   │       ├── StateBackend.write() \u003c-- 2e\n    │   │       │   ├── validate file doesn't exist \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\state.py:127\n    │   │       │   ├── create_file_data(content) \u003c-- 2f\n    │   │       │   │   └── builds FileData dict\n    │   │       │   └── return WriteResult() \u003c-- 2g\n    │   │       │       └── with files_update dict\n    │   │       ├── StoreBackend.write() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\store.py:274\n    │   │       │   └── store.put() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\store.py:293\n    │   │       └── FilesystemBackend.write() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\filesystem.py:236\n    │   │           └── os.open() with O_NOFOLLOW \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\filesystem.py:257\n    │   └── return Command(update={...}) \u003c-- 2h\n    │       └── LangGraph merges into state\n    │\n    └── Result flows back to agent\n        └── ToolMessage added to messages \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\filesystem.py:328",
+      "traceGuide": "# Motivation\n\nDeep agents need to **offload large context to persistent storage** to avoid overwhelming their context windows. When an agent performs web searches, reads large files, or generates lengthy outputs, these results can quickly consume thousands of tokens. The filesystem middleware solves this by providing six tools (`ls`, `read_file`, `write_file`, `edit_file`, `glob`, `grep`) that let agents store and retrieve information from various backends [2a].\n\nThe key challenge is **supporting multiple storage strategies** with a single interface. Agents might need ephemeral storage (in LangGraph state), persistent storage (in LangGraph Store), or actual filesystem access—sometimes all three in the same conversation. The backend protocol [2d] abstracts these differences so tools work identically regardless of where data lives.\n\n# Details\n\n## Tool Generation and Backend Binding\n\nWhen `FilesystemMiddleware` initializes, it generates all six filesystem tools by calling `_get_filesystem_tools()` [2a]. Each tool generator (like `_write_file_tool_generator()`) creates a tool function that's **bound to a backend instance or factory** [2b]. This binding happens at middleware creation time, not at tool execution time.\n\n## Runtime Backend Resolution\n\nWhen an agent calls `write_file`, the tool function first resolves which backend to use by calling `_get_backend(backend, runtime)` [2c]. If the backend is a callable factory, it's invoked with the runtime context to create the actual backend instance. This lazy resolution enables backends that need runtime state (like `StateBackend` which accesses `runtime.state`).\n\n## Backend Write Operations\n\nThe resolved backend's `write()` method handles the actual storage [2d]. For **StateBackend** (ephemeral storage), this means creating a `FileData` dict with content lines and timestamps [2f], then returning a `WriteResult` with a `files_update` dict [2g]. The `files_update` contains `{file_path: file_data}` mappings that LangGraph will merge into the agent's state.\n\nFor **StoreBackend** (persistent storage), files are written to LangGraph's Store with `store.put()`, and `files_update` is `None` since the data is already persisted externally. For **FilesystemBackend**, files are written directly to disk using `os.open()` with `O_NOFOLLOW` for security.\n\n## State Updates via Command Objects\n\nAfter the backend returns a `WriteResult`, the tool wraps it in a **Command object** [2h]. This is critical for LangGraph's state management: the Command's `update` dict tells LangGraph exactly what state changes to apply. The Command also includes a `ToolMessage` that confirms the operation to the agent. LangGraph processes the Command, merges the state updates, and adds the message to the conversation history.\n\nThis architecture means **tools never directly mutate state**—they return declarative updates that the framework applies, ensuring consistency across checkpointing and resumption."
+    },
+    {
+      "id": "3",
+      "title": "Subagent Spawning via Task Tool",
+      "description": "Core library - shows how the task tool creates and invokes isolated subagents with their own context",
+      "locations": [
+        {
+          "id": "3a",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\subagents.py",
+          "lineNumber": 450,
+          "lineContent": "task_tool = _create_task_tool(",
+          "title": "Task tool creation",
+          "description": "SubAgentMiddleware creates the task tool with subagent configurations"
+        },
+        {
+          "id": "3b",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\subagents.py",
+          "lineNumber": 305,
+          "lineContent": "subagent_graphs, subagent_descriptions = _get_subagents(",
+          "title": "Subagent graph compilation",
+          "description": "Compiles all subagent graphs including general-purpose agent"
+        },
+        {
+          "id": "3c",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\subagents.py",
+          "lineNumber": 244,
+          "lineContent": "general_purpose_subagent = create_agent(",
+          "title": "General-purpose subagent creation",
+          "description": "Creates default subagent with same tools as main agent for context isolation"
+        },
+        {
+          "id": "3d",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\subagents.py",
+          "lineNumber": 270,
+          "lineContent": "agents[agent_[\"name\"]] = create_agent(",
+          "title": "Custom subagent creation",
+          "description": "Creates user-defined subagents with custom tools and middleware"
+        },
+        {
+          "id": "3e",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\subagents.py",
+          "lineNumber": 342,
+          "lineContent": "def task(",
+          "title": "Task tool function definition",
+          "description": "The actual tool function that gets called to spawn subagents"
+        },
+        {
+          "id": "3f",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\subagents.py",
+          "lineNumber": 347,
+          "lineContent": "subagent, subagent_state = _validate_and_prepare_state(subagent_type, description, runtime)",
+          "title": "Subagent state preparation",
+          "description": "Validates subagent type and creates isolated state with HumanMessage"
+        },
+        {
+          "id": "3g",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\subagents.py",
+          "lineNumber": 348,
+          "lineContent": "result = subagent.invoke(subagent_state)",
+          "title": "Subagent invocation",
+          "description": "Runs the subagent graph with isolated context until completion"
+        },
+        {
+          "id": "3h",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\subagents.py",
+          "lineNumber": 352,
+          "lineContent": "return _return_command_with_state_update(result, runtime.tool_call_id)",
+          "title": "Result merging",
+          "description": "Extracts final message and merges subagent state back to parent"
+        }
+      ],
+      "traceTextDiagram": "Subagent Spawning via Task Tool\n├── SubAgentMiddleware.__init__() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\subagents.py:435\n│   └── _create_task_tool() \u003c-- 3a\n│       ├── _get_subagents() \u003c-- 3b\n│       │   ├── General-purpose agent creation\n│       │   │   └── create_agent() \u003c-- 3c\n│       │   └── Custom subagent creation loop \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\subagents.py:254\n│       │       └── create_agent() \u003c-- 3d\n│       └── Define task() tool function \u003c-- 3e\n│           ├── _validate_and_prepare_state() \u003c-- 3f\n│           │   ├── Validate subagent_type exists \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\subagents.py:326\n│           │   ├── Get subagent graph from dict \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\subagents.py:329\n│           │   ├── Filter state (exclude msgs/todos) \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\subagents.py:331\n│           │   └── Create state with HumanMessage \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\subagents.py:332\n│           ├── subagent.invoke() \u003c-- 3g\n│           │   └── [Subagent runs independently]\n│           └── _return_command_with_state_update() \u003c-- 3h\n│               ├── Extract non-excluded state keys \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\subagents.py:316\n│               ├── Get final message from result \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\subagents.py:320\n│               └── Return Command with merged state \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\middleware\\subagents.py:317\n└── Tool execution flow\n    └── Agent calls task tool\n        └── task() executes\n            └── Returns Command to parent agent",
+      "traceGuide": "# Motivation\n\nDeep agents need to **delegate complex, multi-step tasks to isolated subagents** to prevent context pollution and enable parallel work. When the main agent encounters a task that requires deep exploration (like researching three different topics independently), spawning subagents allows each to work in its own context window, then return only the synthesized results. This keeps the main agent's context clean while still enabling deep reasoning.\n\nThe **task tool** solves this by providing a simple interface: the main agent calls `task(description=\"research X\", subagent_type=\"research-agent\")`, and a fully-configured subagent runs autonomously until completion, returning only its final message.\n\n# Details\n\n## Subagent Creation\n\nThe `SubAgentMiddleware` creates a **task tool** during initialization [3a]. This involves compiling all available subagent graphs upfront [3b], including:\n\n- A **general-purpose agent** with the same tools as the main agent [3c] - useful for context isolation even without specialized tools\n- **Custom subagents** defined by the user [3d] - each with specific tools, prompts, and middleware for domain expertise\n\nEach subagent is a full LangGraph agent created via `create_agent()`, stored in a dictionary keyed by name.\n\n## Task Execution Flow\n\nWhen the main agent calls the task tool [3e], the system:\n\n1. **Validates** the requested subagent type exists [3f]\n2. **Prepares isolated state** by filtering out `messages` and `todos` from the parent state, then creating a fresh message list with just the task description as a `HumanMessage` [3f]\n3. **Invokes the subagent** synchronously with `subagent.invoke()` [3g] - the subagent runs completely independently, making tool calls and reasoning until it produces a final response\n4. **Merges results back** by extracting the final message and any state updates (excluding messages/todos), wrapping them in a `Command` object [3h] that LangGraph merges into the parent agent's state\n\nThe key insight: **subagents are stateless and ephemeral**. Each invocation is independent, and the parent only sees the final output, not the intermediate reasoning steps. This enables the main agent to parallelize work by launching multiple subagents simultaneously."
+    },
+    {
+      "id": "4",
+      "title": "Backend Storage Architecture and Routing",
+      "description": "Core library - demonstrates how CompositeBackend routes operations to different storage backends",
+      "locations": [
+        {
+          "id": "4a",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\protocol.py",
+          "lineNumber": 89,
+          "lineContent": "class BackendProtocol(Protocol):",
+          "title": "Backend protocol definition",
+          "description": "Defines interface for pluggable storage backends (ls, read, write, edit, grep, glob)"
+        },
+        {
+          "id": "4b",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\composite.py",
+          "lineNumber": 8,
+          "lineContent": "def __init__(",
+          "title": "CompositeBackend initialization",
+          "description": "Sets up routing between default backend and path-prefixed backends"
+        },
+        {
+          "id": "4c",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\composite.py",
+          "lineNumber": 22,
+          "lineContent": "def _get_backend_and_key(self, key: str) -\u003e tuple[BackendProtocol, str]:",
+          "title": "Backend routing logic",
+          "description": "Determines which backend handles a path based on prefix matching"
+        },
+        {
+          "id": "4d",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\composite.py",
+          "lineNumber": 102,
+          "lineContent": "backend, stripped_key = self._get_backend_and_key(file_path)",
+          "title": "Route resolution on read",
+          "description": "Routes read operation to appropriate backend and strips prefix"
+        },
+        {
+          "id": "4e",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\store.py",
+          "lineNumber": 262,
+          "lineContent": "item: Item | None = store.get(namespace, file_path)",
+          "title": "StoreBackend persistent retrieval",
+          "description": "Fetches file from LangGraph Store for cross-thread persistence"
+        },
+        {
+          "id": "4f",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\filesystem.py",
+          "lineNumber": 204,
+          "lineContent": "resolved_path = self._resolve_path(file_path)",
+          "title": "FilesystemBackend path resolution",
+          "description": "Resolves virtual or real paths with security checks for actual filesystem access"
+        },
+        {
+          "id": "4g",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\filesystem.py",
+          "lineNumber": 212,
+          "lineContent": "fd = os.open(resolved_path, os.O_RDONLY | getattr(os, \"O_NOFOLLOW\", 0))",
+          "title": "Secure file reading",
+          "description": "Opens file with O_NOFOLLOW to prevent symlink attacks"
+        }
+      ],
+      "traceTextDiagram": "Backend Storage Architecture\n├── Protocol Definition\n│   └── BackendProtocol interface \u003c-- 4a\n│       ├── ls_info() method \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\protocol.py:103\n│       ├── read() method \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\protocol.py:107\n│       ├── write() method \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\protocol.py:129\n│       ├── edit() method \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\protocol.py:137\n│       ├── grep_raw() method \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\protocol.py:116\n│       └── glob_info() method \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\protocol.py:125\n│\n├── CompositeBackend (Router) \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\composite.py:7\n│   ├── __init__() setup \u003c-- 4b\n│   │   ├── default backend assignment \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\composite.py:14\n│   │   └── routes dict (prefix → backend) \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\composite.py:17\n│   │\n│   ├── _get_backend_and_key() \u003c-- 4c\n│   │   ├── Check route prefixes (longest first) \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\composite.py:33\n│   │   ├── Strip prefix from key \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\composite.py:37\n│   │   └── Return (backend, stripped_key) \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\composite.py:39\n│   │\n│   └── read() operation \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\composite.py:88\n│       ├── Route resolution \u003c-- 4d\n│       └── Delegate to backend.read() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\composite.py:103\n│\n├── StoreBackend (Persistent Storage) \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\store.py:20\n│   └── read() implementation \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\store.py:245\n│       ├── _get_store() helper \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\store.py:260\n│       ├── _get_namespace() helper \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\store.py:261\n│       ├── store.get(namespace, path) \u003c-- 4e\n│       ├── _convert_store_item_to_file_data() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\store.py:268\n│       └── format_read_response() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\store.py:272\n│\n└── FilesystemBackend (Real Files) \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\filesystem.py:27\n    └── read() implementation \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\filesystem.py:190\n        ├── _resolve_path() \u003c-- 4f\n        │   ├── Security checks (.., ~) \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\filesystem.py:68\n        │   ├── Virtual mode path mapping \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\filesystem.py:70\n        │   └── Root containment validation \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\filesystem.py:72\n        │\n        ├── os.open() with O_NOFOLLOW \u003c-- 4g\n        ├── Read file content \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\filesystem.py:214\n        └── format_content_with_line_numbers() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents\\backends\\filesystem.py:232",
+      "traceGuide": "# Motivation\n\nDeep agents need to store and retrieve files in different ways depending on the use case. Some files should be **ephemeral** (exist only during a conversation), some should be **persistent** (survive across conversations), and some should be **real files** on disk. The backend storage architecture solves this by defining a common interface that allows the same filesystem tools (`read_file`, `write_file`, etc.) to work with any storage mechanism.\n\nThe key problem: an agent might need to read from the current working directory, write temporary analysis to in-memory state, and save long-term memories to persistent storage—all using the same tools. Without abstraction, each tool would need custom logic for each storage type.\n\n# Details\n\n## Backend Protocol\n\nAll backends implement `BackendProtocol` [4a], which defines six operations: `ls_info()`, `read()`, `write()`, `edit()`, `grep_raw()`, and `glob_info()`. This protocol ensures any backend can be swapped in without changing tool code.\n\n## Three Backend Types\n\n**StateBackend** stores files in LangGraph's agent state—ephemeral storage that lives only within a conversation thread. Files are kept as dictionaries with content lines and timestamps, merged into state via `WriteResult.files_update`.\n\n**StoreBackend** [4e] uses LangGraph's Store for **persistent, cross-thread storage**. Files survive across conversations and can be shared between threads. It retrieves items via `store.get(namespace, file_path)` and converts them to the standard file data format.\n\n**FilesystemBackend** [4f] reads and writes **actual files on disk**. It includes security features like path resolution with traversal prevention [4g] and `O_NOFOLLOW` to block symlink attacks. Virtual mode maps paths like `/file.txt` to a sandboxed root directory.\n\n## CompositeBackend Router\n\n`CompositeBackend` [4b] routes operations to different backends based on **path prefixes**. For example, `/memories/` might route to StoreBackend while everything else uses StateBackend. The routing logic [4c] matches the longest prefix first, strips it from the path, and delegates to the appropriate backend [4d].\n\nThis enables hybrid setups where the CLI routes `/memories/` to persistent filesystem storage at `~/.deepagents/AGENT_NAME/` while keeping working directory files in the real filesystem—all transparent to the agent using the tools."
+    },
+    {
+      "id": "5",
+      "title": "CLI Application Initialization and Agent Setup",
+      "description": "CLI application - shows how the CLI creates an agent with filesystem backends and HITL configuration",
+      "locations": [
+        {
+          "id": "5a",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\main.py",
+          "lineNumber": 199,
+          "lineContent": "def cli_main():",
+          "title": "CLI entry point",
+          "description": "Main entry function called when user runs deepagents command"
+        },
+        {
+          "id": "5b",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\main.py",
+          "lineNumber": 218,
+          "lineContent": "asyncio.run(main(args.agent, session_state))",
+          "title": "Async main invocation",
+          "description": "Starts async event loop with agent identifier and session config"
+        },
+        {
+          "id": "5c",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\main.py",
+          "lineNumber": 183,
+          "lineContent": "agent = create_agent_with_config(model, assistant_id, tools)",
+          "title": "CLI agent creation",
+          "description": "Creates deep agent with CLI-specific configuration and tools"
+        },
+        {
+          "id": "5d",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\agent.py",
+          "lineNumber": 157,
+          "lineContent": "long_term_backend = FilesystemBackend(root_dir=agent_dir, virtual_mode=True)",
+          "title": "Long-term storage backend",
+          "description": "Creates filesystem backend rooted at ~/.deepagents/AGENT_NAME/"
+        },
+        {
+          "id": "5e",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\agent.py",
+          "lineNumber": 160,
+          "lineContent": "backend = CompositeBackend(",
+          "title": "Composite backend setup",
+          "description": "Routes /memories/ to persistent storage, default to current working directory"
+        },
+        {
+          "id": "5f",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\agent.py",
+          "lineNumber": 253,
+          "lineContent": "agent = create_deep_agent(",
+          "title": "Deep agent instantiation",
+          "description": "Calls core library's create_deep_agent with CLI middleware and backends"
+        },
+        {
+          "id": "5g",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\agent.py",
+          "lineNumber": 259,
+          "lineContent": "interrupt_on={",
+          "title": "HITL configuration",
+          "description": "Configures human-in-the-loop approval for shell, write_file, edit_file, web_search, task"
+        },
+        {
+          "id": "5h",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\agent.py",
+          "lineNumber": 268,
+          "lineContent": "agent.checkpointer = InMemorySaver()",
+          "title": "Checkpointer attachment",
+          "description": "Attaches in-memory checkpointer for conversation state persistence"
+        }
+      ],
+      "traceTextDiagram": "CLI Application Initialization Flow\n├── deepagents command execution\n│   └── cli_main() entry point \u003c-- 5a\n│       └── asyncio.run(main()) \u003c-- 5b\n│           └── async main() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\main.py:173\n│               ├── create_model() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\main.py:176\n│               │   └── validates API keys\n│               └── create_agent_with_config() \u003c-- 5c\n│                   ├── Setup middleware\n│                   │   ├── ResumableShellToolMiddleware \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\agent.py:143\n│                   │   └── AgentMemoryMiddleware \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\agent.py:166\n│                   ├── Setup storage backends\n│                   │   ├── FilesystemBackend(agent_dir) \u003c-- 5d\n│                   │   │   └── agent_dir path \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\agent.py:148\n│                   │   └── CompositeBackend() \u003c-- 5e\n│                   │       ├── default backend \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\agent.py:161\n│                   │       └── /memories/ route \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\agent.py:161\n│                   ├── get_system_prompt() \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\agent.py:171\n│                   │   └── memory + HITL instructions\n│                   ├── Configure HITL interrupts \u003c-- 5g\n│                   │   ├── shell config \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\agent.py:260\n│                   │   ├── write_file config \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\agent.py:261\n│                   │   ├── edit_file config \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\agent.py:262\n│                   │   ├── web_search config \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\agent.py:263\n│                   │   └── task config \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\agent.py:264\n│                   └── create_deep_agent() \u003c-- 5f\n│                       ├── [calls core library]\n│                       └── returns compiled graph\n│                           └── attach InMemorySaver() \u003c-- 5h",
+      "traceGuide": "# Motivation\n\nThe deepagents CLI provides a **command-line interface** for interacting with deep agents in a coding assistant context. The core problem it solves is making the deepagents library accessible for developers who want an **interactive terminal experience** with features like:\n\n- **Persistent memory** across sessions (stored in `~/.deepagents/AGENT_NAME/`)\n- **Human-in-the-loop approval** for potentially destructive operations (file writes, shell commands, web searches)\n- **Dual filesystem access**: both the current working directory and a persistent memory directory\n\nWithout the CLI, users would need to write their own integration code to handle checkpointing, memory management, and user approval workflows.\n\n# Details\n\n## Initialization Flow\n\nWhen you run the `deepagents` command, the entry point [5a] starts an async event loop [5b] that creates an agent with CLI-specific configuration [5c].\n\n## Storage Architecture\n\nThe CLI sets up a **CompositeBackend** [5e] that routes file operations to different storage locations:\n\n- **Default backend**: `FilesystemBackend()` pointing to your current working directory - for project files\n- **Memory backend**: `FilesystemBackend(agent_dir)` [5d] pointing to `~/.deepagents/AGENT_NAME/` - for persistent agent memory\n\nThe agent directory is created at [5d] and contains an `agent.md` file with custom instructions plus a `/memories/` subdirectory for long-term knowledge storage.\n\n## Human-in-the-Loop Configuration\n\nThe CLI configures **mandatory approval** [5g] for five tool categories:\n- Shell commands (`shell`)\n- File creation (`write_file`)\n- File editing (`edit_file`)\n- Web searches (`web_search`)\n- Subagent spawning (`task`)\n\nEach interrupt config includes a custom description formatter that shows the user exactly what the agent wants to do before execution.\n\n## Agent Creation\n\nThe CLI calls the core library's `create_deep_agent()` [5f] with:\n- The composite backend for dual filesystem access\n- CLI-specific middleware (ResumableShellToolMiddleware, AgentMemoryMiddleware)\n- HITL interrupt configurations\n- A system prompt that explains the memory system and tool approval workflow\n\nFinally, an **InMemorySaver checkpointer** [5h] is attached to persist conversation state within the current session (not across restarts)."
+    },
+    {
+      "id": "6",
+      "title": "CLI Task Execution and Streaming",
+      "description": "CLI application - traces user input through agent invocation to streamed output display",
+      "locations": [
+        {
+          "id": "6a",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\main.py",
+          "lineNumber": 138,
+          "lineContent": "user_input = await session.prompt_async()",
+          "title": "User input capture",
+          "description": "Async prompt toolkit captures user input with multiline support"
+        },
+        {
+          "id": "6b",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\main.py",
+          "lineNumber": 170,
+          "lineContent": "await execute_task(user_input, agent, assistant_id, session_state, token_tracker)",
+          "title": "Task execution dispatch",
+          "description": "Delegates to execute_task for agent invocation and streaming"
+        },
+        {
+          "id": "6c",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\execution.py",
+          "lineNumber": 1,
+          "lineContent": "async def execute_task(",
+          "title": "Task execution function",
+          "description": "Handles agent streaming, HITL interrupts, and response rendering"
+        },
+        {
+          "id": "6d",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\execution.py",
+          "lineNumber": 1,
+          "lineContent": "async for chunk in agent.astream(",
+          "title": "Agent streaming invocation",
+          "description": "Streams agent execution chunks including messages, tool calls, and state updates"
+        },
+        {
+          "id": "6e",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\execution.py",
+          "lineNumber": 1,
+          "lineContent": "if \"messages\" in chunk:",
+          "title": "Message chunk processing",
+          "description": "Extracts and renders AI messages, tool calls, and tool results"
+        },
+        {
+          "id": "6f",
+          "path": "c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\execution.py",
+          "lineNumber": 1,
+          "lineContent": "if chunk.get(\"__interrupt__\"):",
+          "title": "HITL interrupt handling",
+          "description": "Detects human-in-the-loop interrupts and prompts user for approval/rejection"
+        }
+      ],
+      "traceTextDiagram": "CLI Task Execution and Streaming Flow\n│\n├── CLI Main Loop (main.py)\n│   ├── simple_cli() async loop \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\main.py:96\n│   │   ├── session.prompt_async() \u003c-- 6a\n│   │   ├── command/bash handling \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\main.py:151\n│   │   └── execute_task() dispatch \u003c-- 6b\n│   │       │\n│   │       └── execution.py\n│   │           ├── execute_task() function \u003c-- 6c\n│   │           │   ├── prepare input state\n│   │           │   │   └── HumanMessage creation\n│   │           │   │\n│   │           │   ├── agent.astream() call \u003c-- 6d\n│   │           │   │   └── async for chunk loop\n│   │           │   │       │\n│   │           │   │       ├── chunk[\"messages\"] \u003c-- 6e\n│   │           │   │       │   ├── render AI text\n│   │           │   │       │   ├── render tool calls\n│   │           │   │       │   └── render tool results\n│   │           │   │       │\n│   │           │   │       ├── chunk[\"__interrupt__\"] \u003c-- 6f\n│   │           │   │       │   ├── display tool info\n│   │           │   │       │   ├── prompt user decision\n│   │           │   │       │   └── agent.astream(resume)\n│   │           │   │       │\n│   │           │   │       └── chunk[\"todos\"]\n│   │           │   │           └── render todo list\n│   │           │   │\n│   │           │   └── token_tracker.update()\n│   │           │\n│   │           └── ui.py rendering helpers\n│   │               ├── format_ai_message()\n│   │               ├── format_tool_call()\n│   │               └── format_tool_result()\n│   │\n│   └── return to prompt loop \u003c-- c:\\_MyStuff\\LANGCHAIN\\deepagents-my\\libs\\deepagents-cli\\deepagents_cli\\main.py:136",
+      "traceGuide": "# Motivation\n\nThe deepagents CLI provides an **interactive coding assistant** that runs in your terminal. Users type requests like \"refactor this function\" or \"add error handling to my API\", and the agent executes the work by calling tools (reading files, editing code, running shell commands) while streaming its progress in real-time.\n\nThe core challenge is **managing the interaction loop**: capturing user input, invoking the LangGraph agent asynchronously, streaming partial results as they arrive, handling **human-in-the-loop approvals** for potentially destructive operations (like file writes or shell commands), and maintaining conversation state across multiple turns.\n\n# Details\n\n## Input Capture and Dispatch\n\nThe CLI runs an async event loop [6a] that uses `prompt_toolkit` to capture user input with multiline support and keyboard shortcuts. When the user submits a message, the main loop checks for special commands (starting with `/` or `!`) before dispatching regular requests to `execute_task()` [6b].\n\n## Streaming Agent Execution\n\nThe `execute_task()` function [6c] wraps the user's message in a `HumanMessage` and calls `agent.astream()` [6d] to begin streaming execution. This returns an **async generator** that yields chunks as the agent thinks, calls tools, and receives results.\n\nThe streaming loop processes three types of chunks [6e]:\n- **Messages**: AI text responses, tool calls, and tool results that get rendered to the terminal\n- **Interrupts** [6f]: Human-in-the-loop pauses where the agent requests approval for operations like `write_file` or `shell` commands\n- **Todos**: Task list updates that show the agent's planning\n\n## Human-in-the-Loop Flow\n\nWhen the agent wants to execute a potentially destructive tool, LangGraph pauses execution and yields an `__interrupt__` chunk [6f]. The CLI displays the tool details (file path, command, etc.) and prompts the user to approve or reject. Based on the decision, it calls `agent.astream()` again with a `Command` to resume execution.\n\nThis **approval mechanism** prevents the agent from accidentally overwriting important files or running dangerous commands without user consent.\n\n## State Persistence\n\nThe agent uses an `InMemorySaver` checkpointer that maintains conversation history within the session. Each streaming invocation updates the checkpoint, so the agent remembers previous messages and tool results across multiple turns in the conversation loop."
+    }
+  ],
+  "description": "This map covers the deepagents library architecture, showing how deep agents are created with middleware-based capabilities (planning, filesystem, subagents) and how the CLI wraps this functionality. Key entry points: agent creation [1a], filesystem tool execution [2b], subagent spawning [3c], and CLI initialization [5b].",
+  "mermaidDiagram": "graph TB\n    subgraph core[\"Core Agent Creation\"]\n        1a[\"1a: create_deep_agent entry\"]\n        1c[\"1c: middleware stack assembly\"]\n        1g[\"1g: create_agent delegation\"]\n        1h[\"1h: compiled graph return\"]\n    end\n    \n    subgraph middleware[\"Middleware Components\"]\n        1d[\"1d: TodoListMiddleware\"]\n        1e[\"1e: FilesystemMiddleware\"]\n        1f[\"1f: SubAgentMiddleware\"]\n        3b[\"3b: subagent graph compilation\"]\n        3c[\"3c: general-purpose subagent\"]\n        3d[\"3d: custom subagents\"]\n    end\n    \n    subgraph filesystem[\"Filesystem Operations\"]\n        2b[\"2b: write_file tool\"]\n        2c[\"2c: backend resolution\"]\n        2d[\"2d: backend write call\"]\n        2h[\"2h: Command with state update\"]\n    end\n    \n    subgraph backends[\"Backend Storage\"]\n        4a[\"4a: BackendProtocol definition\"]\n        4c[\"4c: CompositeBackend routing\"]\n        4e[\"4e: StoreBackend persistent\"]\n        4f[\"4f: FilesystemBackend path\"]\n        4g[\"4g: secure file reading\"]\n    end\n    \n    subgraph cli[\"CLI Application Setup\"]\n        5a[\"5a: cli_main entry\"]\n        5c[\"5c: create_agent_with_config\"]\n        5d[\"5d: long-term storage backend\"]\n        5e[\"5e: CompositeBackend setup\"]\n        5f[\"5f: deep agent instantiation\"]\n        5h[\"5h: checkpointer attachment\"]\n    end\n    \n    subgraph execution[\"CLI Task Execution\"]\n        6a[\"6a: user input capture\"]\n        6b[\"6b: execute_task dispatch\"]\n        6d[\"6d: agent streaming\"]\n        6f[\"6f: HITL interrupt handling\"]\n    end\n    \n    1a --\u003e|assembles| 1c\n    1c --\u003e|includes| 1d\n    1c --\u003e|includes| 1e\n    1c --\u003e|includes| 1f\n    1c --\u003e|passes to| 1g\n    1g --\u003e|returns| 1h\n    \n    1e --\u003e|generates| 2b\n    2b --\u003e|resolves| 2c\n    2c --\u003e|invokes| 2d\n    2d --\u003e|wraps| 2h\n    \n    1f --\u003e|compiles| 3b\n    3b --\u003e|creates| 3c\n    3b --\u003e|creates| 3d\n    \n    2d --\u003e|delegates to| 4a\n    2c --\u003e|routes through| 4c\n    4c --\u003e|uses| 4e\n    4c --\u003e|uses| 4f\n    4f --\u003e|reads via| 4g\n    \n    5a --\u003e|starts| 5c\n    5c --\u003e|calls| 1a\n    5c --\u003e|creates| 5d\n    5d --\u003e|composes| 5e\n    5e --\u003e|passes to| 5f\n    5f --\u003e|attaches| 5h\n    \n    5h --\u003e|produces| 5f\n    6a --\u003e|triggers| 6b\n    6b --\u003e|invokes| 6d\n    6d --\u003e|detects| 6f\n    \n    5f -.-\u003e|agent instance| 6d\n    \n    style core fill:#eebefa\n    style middleware fill:#fcc2d7\n    style filesystem fill:#d0bfff\n    style backends fill:#b2f2bb\n    style cli fill:#ffec99\n    style execution fill:#ffd8a8"
+}
