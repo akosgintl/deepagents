@@ -9,7 +9,7 @@ description: "Interactive workflow builder that guides creation of new BMAD work
 author: "BMad Builder"
 
 # Critical variables
-config_source: "{project-root}/bmad/bmb/config.yaml"
+config_source: "{project-root}/.bmad/bmb/config.yaml"
 custom_workflow_location: "{config_source}:custom_workflow_location"
 user_name: "{config_source}:user_name"
 communication_language: "{config_source}:communication_language"
@@ -20,13 +20,8 @@ template_instructions: "{workflow_template_path}/instructions.md"
 template_template: "{workflow_template_path}/template.md"
 template_checklist: "{workflow_template_path}/checklist.md"
 
-# Optional input docs
-recommended_inputs:
-  - existing_workflows: "{project-root}/bmad/*/workflows/"
-  - bmm_workflows: "{project-root}/bmad/bmm/workflows/"
-
 # Module path and component files
-installed_path: "{project-root}/bmad/bmb/workflows/create-workflow"
+installed_path: "{project-root}/.bmad/bmb/workflows/create-workflow"
 template: false # This is an action workflow - no template needed
 instructions: "{installed_path}/instructions.md"
 validation: "{installed_path}/checklist.md"
@@ -35,10 +30,14 @@ validation: "{installed_path}/checklist.md"
 workflow_creation_guide: "{installed_path}/workflow-creation-guide.md"
 workflow_template_path: "{installed_path}/workflow-template"
 
+# Reference examples - for learning patterns
+existing_workflows_dir: "{project-root}/.bmad/*/workflows/"
+bmm_workflows_dir: "{project-root}/.bmad/bmm/workflows/"
+
 # Output configuration - Creates the new workflow folder with all files
 # If workflow belongs to a module: Save to module's workflows folder
 # If standalone workflow: Save to custom_workflow_location/{{workflow_name}}
-module_output_folder: "{project-root}/bmad/{{target_module}}/workflows/{{workflow_name}}"
+module_output_folder: "{project-root}/.bmad/{{target_module}}/workflows/{{workflow_name}}"
 standalone_output_folder: "{custom_workflow_location}/{{workflow_name}}"
 
 standalone: true
